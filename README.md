@@ -13,12 +13,15 @@ This is some work for my 2025 NCEA Level 3 Digitech Class at [Wainuiomata High S
 
 - [x] 1. Make Name
 - [ ] 2. Write Project Brief
-- [ ] 3. Make Logo
+- [x] 3. Make Logo
+
+- [ ] Document Logo Process
 
 ---
 
 # Project Kādo
 
+![KadoLogo](Logo/Kado-v2(1600x1600).png)
 
 ## Requirements
 
