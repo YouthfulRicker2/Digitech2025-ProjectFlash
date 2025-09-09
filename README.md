@@ -15,7 +15,7 @@ This is some work for my 2025 NCEA Level 3 Digitech Class at [Wainuiomata High S
 - [ ] 2. Write Project Brief
 - [x] 3. Make Logo
 
-- [ ] Document Logo Process
+- [x] Document Logo Process
 
 ---
 
