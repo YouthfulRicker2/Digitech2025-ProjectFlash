@@ -12,12 +12,20 @@ This is some work for my 2025 NCEA Level 3 Digitech Class at [Wainuiomata High S
 ## Planning Steps
 
 - [x] 1. Make Name
-- [ ] 2. Write Project Brief
+- [x] 2. Write Project Brief
 - [x] 3. Make Logo
 
 - [x] Document Logo Process
 
----
+## Project Brief
+
+This app will be a flashcard app to assist with learning using a spaced repetitional algorithm. I will keep it in the command-line using python. It will give the user small motivational prompts to keep them engaged, and it will retain all it's data through an external file, allowing for modularity and portability.
+
+## Leitner System Diagram - Spaced Repetition Basic Diagram
+
+This diagram shows how I will implement the Leitner system in my program. The Leitner system is a system of thought that allows for better retention of knowledge within the spaced repetition system, and saves time for the person utilizing the system.
+
+![Leitner System](Leitner System diagram\Leitner System.drawio.svg)
 
 # Project Kādo
 
@@ -34,7 +42,7 @@ This is some work for my 2025 NCEA Level 3 Digitech Class at [Wainuiomata High S
 
 ## Programming Primary Steps
 
-- [ ] 1. Simply & Quantify Spaced Repetition Algorithm
+- [ ] 1. Simply & Quantify Spaced Repetition Algorithm - Leitner System
 - [ ] 2. Flowchart Program Process (Solution Design)
     - Keep Terminology/Program Function Simple
 - [ ] 3. Make Example of Working Program w/o Code (text flowchart w/ examples)
