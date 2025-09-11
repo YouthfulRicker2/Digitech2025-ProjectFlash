@@ -42,7 +42,7 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 
 ## Programming Primary Steps
 
-- [ ] 1. Simply & Quantify Spaced Repetition Algorithm - Leitner System
+- [x] 1. Simply & Quantify Spaced Repetition Algorithm - Leitner System
 - [ ] 2. Flowchart Program Process (Solution Design)
     - Keep Terminology/Program Function Simple
 - [ ] 3. Make Example of Working Program w/o Code (text flowchart w/ examples)
