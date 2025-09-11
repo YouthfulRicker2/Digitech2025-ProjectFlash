@@ -25,7 +25,7 @@ This app will be a flashcard app to assist with learning using a spaced repetiti
 
 This diagram shows how I will implement the Leitner system in my program. The Leitner system is a system of thought that allows for better retention of knowledge within the spaced repetition system, and saves time for the person utilizing the system.
 
-![Leitner System](leitnerSystemDiagram\LeitnerSystem.drawio.svg)
+![LeitnerSystem](leitnerSystemDiagram\LeitnerSystem.drawio.svg)
 
 # Project Kādo
 
