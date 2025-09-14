@@ -40,6 +40,24 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 - [ ] Spaced Repetition Algorithm (Basic)
 - [ ] User Retention Methods (Daily Streak, Progress Tracking, etc.)
 
+### Stakeholder Feedback
+
+- Kaedyn (post-coreFlowchart)
+    - [ ] Add emojis for clarity
+
+### Contemplation
+
+- Leitner System (2025.09.15)
+    - Should the system be based on time taken to answer or number of times the card has been revised?
+    - Both integrated would be ideal, though an algorithmic nightmare, a potential future addition.
+    - Time taken factors: 
+        - Prior knowledge included in factor
+        - Follows leitner system
+    - Number of time factors:
+        - Prior knowledge not included
+        - Simpler for computation
+    - Final verdict: Utilise Time Taken for leitner system and prior knowledge
+
 ## Programming Primary Steps
 
 - [x] 1. Simply & Quantify Spaced Repetition Algorithm - Leitner System
