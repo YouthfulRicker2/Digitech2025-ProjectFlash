@@ -33,17 +33,20 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 
 ## Requirements
 
-- [ ] Text-Based Interface
+- [x] Text-Based Interface
 - [ ] Template CSV for User Simplicity
-- [ ] Simple Terms/Function
-- [ ] Save to External File (Including User Data)
-- [ ] Spaced Repetition Algorithm (Basic)
+- [x] Simple Terms/Function
+- [x] Save to External File (Including User Data)
+- [x] Spaced Repetition Algorithm (Basic)
 - [ ] User Retention Methods (Daily Streak, Progress Tracking, etc.)
 
 ### Stakeholder Feedback
 
 - Kaedyn (post-coreFlowchart)
-    - [ ] Add emojis for clarity
+    - [x] Add emojis for clarity
+- Father (post-prototype)
+    - [ ] Have summary of study at end
+    - [ ] Make randomness algorithm (Spaced Repetition)
 
 ### Contemplation
 
