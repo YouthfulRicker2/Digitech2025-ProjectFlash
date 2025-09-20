@@ -1,6 +1,9 @@
+from data import fileManagement
+
 import csv
 import random
 import time
+import os
 
 CSV_FILE = "cards.csv"
 
@@ -10,6 +13,8 @@ class cardParse:
     @staticmethod
     def load_cards(filename):
         """Converts csv to internal dict"""
+        if not os.path.exists(CSV_FILE):
+            fileManagement.create_csv(CSV_FILE)
         with open(filename, newline='', encoding="utf-8") as f:
             reader = csv.DictReader(f)
             return list(reader)
@@ -93,3 +98,4 @@ def main():
         if cont.lower() != "y":
             print("Baiii!!")
             break
+    return cards

@@ -72,3 +72,7 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 ## Flowchart
 
 Documentation for the Program Flowchart [is here](programDiagram/)
+
+## Testing
+
+Documentation for automated and manual testing is available at [the tests folder.](tests/)
