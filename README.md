@@ -34,7 +34,7 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 ## Requirements
 
 - [x] Text-Based Interface
-- [ ] Template CSV for User Simplicity
+- [x] Template CSV for User Simplicity
 - [x] Simple Terms/Function
 - [x] Save to External File (Including User Data)
 - [x] Spaced Repetition Algorithm (Basic)
@@ -46,7 +46,7 @@ This diagram shows how I will implement the Leitner system in my program. The Le
     - [x] Add emojis for clarity
 - Father (post-prototype)
     - [ ] Have summary of study at end
-    - [ ] Make randomness algorithm (Spaced Repetition)
+    - [x] Make randomness algorithm (Spaced Repetition)
 
 ### Contemplation
 
@@ -66,7 +66,7 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 - [x] 1. Simply & Quantify Spaced Repetition Algorithm - Leitner System
 - [x] 2. Flowchart Program Process (Solution Design)
     - Keep Terminology/Program Function Simple
-- [ ] 3. Make Example of Working Program w/o Code (text flowchart w/ examples)
+- [x] 3. Make Example of Working Program w/o Code (text flowchart w/ examples)
 - [ ] 4. Make Program.
 
 ## Flowchart
@@ -76,3 +76,15 @@ Documentation for the Program Flowchart [is here](programDiagram/)
 ## Testing
 
 Documentation for automated and manual testing is available at [the tests folder.](tests/)
+
+# Planning
+
+I utilised Microsoft Planner to plan out my project, and am currently using it as a central list of requirements and necessities.\
+Here is how it looks as of this commit:\
+![2025.09.27Planner](planning/Screenshot%202025-09-27%20004339.png)
+
+# Relevant Implications
+
+1. I have utilised error-catching algorithms throughout the program to increase it's usability and functionality. This is an important aspect to include because if I am to create a smooth experience for the end-user, it is best practise to assume any and all accidental mishaps will occur with the program. If the user enters a value which triggers any exception, it shouldn't break the program and cause it to cease function; i.e. crash. It should run ahead and simply ask the user to repeat themselves. As an example, in [actions.py](actions.py) for when the user is asked whether or not they've gotten the question's answer correct, the program creates a `while` loop which is dependent on the user entering a valid value, so the user is effectively forced into picking a value that truly matches their intent. Put simply it will keep asking the user for input until they enter `y` or `n`.
+
+2. My program is designed and built with sustainability and future-proofing in mind. The primary method through which I have done this is by making my program with Object-Oriented Programming. This philosophy, as opposed to a waterfall model, allows for modular additions/upgrades while the core of the system remains intact. `fileManagement` in [data.py](data.py) handles managing the external CSV file, `cardParse` in [actions.py](actions.py) manages loading and saving flashcards to and from the program memory, `studyTime` in [actions.py](actions.py) handles controlling the logic of the study session itself, and manages promoting cards from Leitner Box values. Finally, [main.py](main.py) runs the program in a loop until it is broken. The modularity of an Object-Oriented Programming can allow for simplicity in upgrades and fixes, as an example, if I wanted to add a module to allow an external API to modify the local cards, all I would need to do is create and define a function in a new class that I would put into [data.py](data.py), get it to bring in the API, and allow it to modify the file however it wants, to which then it would simply need to be referenced within [actions.py](actions.py). The modularity and systemic flow is of utmost importance for introducing elements to the program.
