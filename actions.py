@@ -5,7 +5,7 @@ import random
 import time
 import os
 
-CSV_FILE = "cards.csv"
+CSV_FILE = "HiraganaSentences.csv"
 
 class cardParse:
     """Parses/modifies csv through internal dict"""
@@ -13,8 +13,8 @@ class cardParse:
     @staticmethod
     def load_cards(filename):
         """Converts csv to internal dict"""
-        if not os.path.exists(CSV_FILE):
-            fileManagement.create_csv(CSV_FILE)
+        if not os.path.exists(filename):
+            fileManagement.create_csv(filename)
         with open(filename, newline='', encoding="utf-8") as f:
             reader = csv.DictReader(f)
             return list(reader)
@@ -89,13 +89,34 @@ class studyTime:
 def main():
     """Runs the program"""
     cards = cardParse.load_cards(CSV_FILE)
+    session_count = 0
+    affirmations = [
+        "🌟 Nice work! You're doing great!",
+        "🔥 Keep going — you'll have this in no time!",
+        "💪 You're smashing it! Stay sharp!"
+    ]
+    next_affirmation = random.randint(1, 3)
+    since_affirmation = 0
+
+    print(f"You are studying '{CSV_FILE}'!")
 
     for card in studyTime.randomized_play(cards):
-        cardParse.save_cards(CSV_FILE, cards)
-        print("Card progress saved.\n")
+        session_count += 1
+        since_affirmation += 1
+
+        if since_affirmation >= next_affirmation:
+            print("\n" + random.choice(affirmations) + "\n")
+            since_affirmation = 0
+            next_affirmation = random.randint(1, 3)
 
         cont = input("Continue? (y/n): ").lower()
         if cont.lower() != "y":
+            print(f"\n📚 Session complete! You studied {session_count} cards.")
+            print(cards)
             print("Baiii!!")
             break
-    return cards
+    else:
+        print(f"\n📚 Session complete! You studied all {session_count} cards.")
+        print("Baiii!!")
+
+    cardParse.save_cards(CSV_FILE, cards)

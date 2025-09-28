@@ -38,17 +38,17 @@ This diagram shows how I will implement the Leitner system in my program. The Le
 - [x] Simple Terms/Function
 - [x] Save to External File (Including User Data)
 - [x] Spaced Repetition Algorithm (Basic)
-- [ ] User Retention Methods (Daily Streak, Progress Tracking, etc.)
+- [x] User Retention Methods (Affirmation, Progress Tracking, etc.)
 
 ### Stakeholder Feedback
 
 - Kaedyn (post-coreFlowchart)
     - [x] Add emojis for clarity
 - Father (post-prototype)
-    - [ ] Have summary of study at end
+    - [x] Have summary of study at end
     - [x] Make randomness algorithm (Spaced Repetition)
 
-### Contemplation
+### Contemplation/Trial
 
 - Leitner System (2025.09.15)
     - Should the system be based on time taken to answer or number of times the card has been revised?
@@ -60,6 +60,14 @@ This diagram shows how I will implement the Leitner system in my program. The Le
         - Prior knowledge not included
         - Simpler for computation
     - Final verdict: Utilise Time Taken for leitner system and prior knowledge
+- Further trialling was done in word document for stakeholder feedback input, periodic pastes shall be conducted when possible.
+- CSV Template Usability Trial (2025.09.28)
+    - I trialled the template CSV by giving two of my friends (Darrin, Kaedyn) a random task to add 5 flashcards to the template csv.
+    - Feedback: 
+        - Leitner Box Column Barriers Unknown (1-5, user should start with all at 1 but not shown in documentation)
+        - How to add commas in csv?
+    - Implementation:
+        - Added two more lines of template with examples and description.
 
 ## Programming Primary Steps
 
