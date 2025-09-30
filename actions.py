@@ -47,16 +47,16 @@ class studyTime:
         while correct.lower() not in ["y","n"]:
             correct = input("Did you get it right? (y/n): ").strip().lower()
             if correct.lower() == "y":
-                if elapsed <= 10:
+                if elapsed <= 2:
                     card["LeitnerBox"] = "5"
                     print(f"✅ Correct! You took {elapsed:.2f}s. Card moved to Box {card['LeitnerBox']}")
-                elif elapsed <= 30:
+                elif elapsed <= 5:
                     card["LeitnerBox"] = "4"
                     print(f"✅ Correct! You took {elapsed:.2f}s. Card moved to Box {card['LeitnerBox']}")
-                elif elapsed <= 60:
+                elif elapsed <= 10:
                     card["LeitnerBox"] = "3"
                     print(f"✅ Correct! You took {elapsed:.2f}s. Card moved to Box {card['LeitnerBox']}")
-                elif elapsed <= 120:
+                elif elapsed <= 15:
                     card["LeitnerBox"] = "2"
                     print(f"✅ Correct! You took {elapsed:.2f}s. Card moved to Box {card['LeitnerBox']}")
                 else:
@@ -120,3 +120,4 @@ def main():
         print("Baiii!!")
 
     cardParse.save_cards(CSV_FILE, cards)
+    return cards, session_count

@@ -43,12 +43,12 @@ def test_actions_main_runs(monkeypatch):
     ]
     monkeypatch.setattr("builtins.input", dummyInput(user_inputs))
 
-    times = [0, 8, 0, 35]  
+    times = [0, 1, 0, 8]  
     monkeypatch.setattr("time.time", dummyTime(times).time)
 
     # Run program
     main()
 
     # assert test_cards objects updated
-    assert test_cards[0]["LeitnerBox"] == "5"  # 8s -> Box 5
-    assert test_cards[1]["LeitnerBox"] == "3"  # 35s -> Box 3
+    assert test_cards[0]["LeitnerBox"] == "5"  # 1s -> Box 5
+    assert test_cards[1]["LeitnerBox"] == "3"  # 8s -> Box 3

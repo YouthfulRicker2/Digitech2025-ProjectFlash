@@ -68,6 +68,12 @@ This diagram shows how I will implement the Leitner system in my program. The Le
         - How to add commas in csv?
     - Implementation:
         - Added two more lines of template with examples and description.
+- Leitner System Refinement Trial (2025.09.29)
+    - I gave my father and Darrin each two versions to try, one with a shorter time interval between leitner values, and one with the current values. 
+    - Feedback:
+        - Shorter was better, even with little known knowledge they reached values 4-5
+    - Implementation
+        - Shortened leitner times. Adjusted program and program tests to reflect modifications
 
 ## Programming Primary Steps
 

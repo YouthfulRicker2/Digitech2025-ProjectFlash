@@ -27,12 +27,12 @@ def test_ask_card_leitner_timing(monkeypatch):
     
     # Test cases as tuples: (elapsed_time, expected_box, user_answer)
     test_cases = [
-        (8,  "5", "y"),    # <=10s
-        (15, "4", "y"),    # 11-30s
-        (45, "3", "y"),    # 31-60s
-        (90, "2", "y"),    # 61-120s
-        (150,"1", "y"),    # >120s
-        (50, "1", "n")     # wrong answer
+        (1,  "5", "y"),   # <=2s
+        (4, "4", "y"),    # 3-5s
+        (7, "3", "y"),    # 6-10s
+        (12, "2", "y"),   # 11-15s
+        (20,"1", "y"),    # >15s
+        (10, "1", "n")    # wrong answer
     ]
 
     for elapsed, expected_box, user_answer in test_cases:
@@ -67,3 +67,26 @@ def test_randomized_play_yields(monkeypatch):
 
     # Ensure all cards were yielded
     assert set(seen_questions) == {"Q1","Q2","Q3","Q4"}
+
+def test_session_count_after_main(monkeypatch):
+    """Test main() counts correct number of studied cards."""
+
+    fake_cards = [
+        {"Question": "Q1", "Answer": "A1", "LeitnerBox": "1"},
+        {"Question": "Q2", "Answer": "A2", "LeitnerBox": "1"},
+        {"Question": "Q3", "Answer": "A3", "LeitnerBox": "1"},
+    ]
+
+    monkeypatch.setattr("actions.cardParse.load_cards", lambda filename: fake_cards)
+    monkeypatch.setattr("actions.cardParse.save_cards", lambda a, b: None)
+    monkeypatch.setattr("actions.studyTime.ask_card", lambda card: None)
+
+    inputs = dummyInput(["y", "y", "n"])
+    monkeypatch.setattr("builtins.input", inputs)
+
+    from actions import main
+    result, card_count = main()
+    assert result is fake_cards
+    assert card_count is 3
+
+

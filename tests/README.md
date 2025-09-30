@@ -13,10 +13,7 @@ This program first imports the data functions, then it utilizes `fileManagement.
 This test module imports the `studyTime` class of [actions.py](actions.py) and then defines two dummy helpers (`dummyInput` & `dummyTime`) to spoof user input and user time taken respectively.\
 The first test (`test_ask_card_leitner_timing`) first uses `monkeypatch` to spoof the existence of a csv using a test-defined dictionary, and creates a tuple to log expected end leitner value and required input. It asserts that the end leitner result for the card is as expected.\
 The second test (`test_randomized_play_yields`) builds a spoof dictionary deck with expected states for primary (`1`-`3`) and secondary (`4`-`5`) leitner values. It simulates every card getting a quick answer and thus makes sure that each card was yielded only once.
-
-#### Additions
-
-- [ ] Test `cardParse` class.
+The third test (`test_session_count`) builds a deck and then runs it with all answered, it then confirms that the `main()` function returns the correct number of cards that have been run: `3`.
 
 ### [test_main.py](test_main.py)
 
@@ -40,6 +37,10 @@ The primary testkit first imports the `main()` function, `cardParse` class, and 
     - ID: `test_actions_main_runs`
     - This test validates the full `main()` function's flow, simulating card loading, saving, shuffling, user input, and timing.
     - It confirms that Leitner box values are updated correctly based on simulated user behavior (e.g., 8s → Box 5, 35s → Box 3).
+- End Tally Test
+    - ID: `test_session_count`
+    - This test checks that `session_count` within main, correctly counts the session's card count. 
+    - It confirms that the end value is 3 after simulating a user interaction. 
 
 
 ## Testing
@@ -47,14 +48,16 @@ Tests can be simply run by installing and running `pytest` in Kādo program's ro
 
 iteration1 = Commit ID: [b19f1f1296ebb3e34016be64353b91a19a4026a2](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/b19f1f1296ebb3e34016be64353b91a19a4026a2)\
 iteration2 = Commit ID: [98c131eae39c3d1e32b5677422061607361fd6e7](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/98c131eae39c3d1e32b5677422061607361fd6e7)\
+iteration3 = current commit, link will be added on next commit
 
 N/A indicates that the feature wasn't implemented or tested in that iteration.
 
 iteration1 was not tested due to the tests not being fully developed at that stage. They were developed alongside and completed slightly after iteration2.
 
-| Test Friendly Name | Test ID | iteration1 | iteration2 |
-|-------------------------------|-------------------------------|-------------|-------------|
-| Leitner System Timing Test | `test_ask_card_leitner_timing` | N/A | Yes |
-| Card Priority/Randomizer Test | `test_randomized_play_yields` | N/A | Yes |
-| Adding/Removing Card Test | `test_add_and_remove_card` | N/A | Yes |
-| Program Flow Test | `test_actions_main_runs` | N/A | Yes |
+| Test Friendly Name | Test ID | iteration1 | iteration2 | iteration3 |
+|-------------------------------|-------------------------------|-------------|-------------|-------------|
+| Leitner System Timing Test | `test_ask_card_leitner_timing` | N/A | Yes | Yes |
+| Card Priority/Randomizer Test | `test_randomized_play_yields` | N/A | Yes | Yes |
+| Adding/Removing Card Test | `test_add_and_remove_card` | N/A | Yes | Yes|
+| Program Flow Test | `test_actions_main_runs` | N/A | Yes | Yes |
+| End Tally Test | `test_session_count` | N/A | N/A | Yes |
