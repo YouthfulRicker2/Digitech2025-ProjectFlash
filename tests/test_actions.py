@@ -68,7 +68,7 @@ def test_randomized_play_yields(monkeypatch):
     # Ensure all cards were yielded
     assert set(seen_questions) == {"Q1","Q2","Q3","Q4"}
 
-def test_session_count_after_main(monkeypatch):
+def test_session_count(monkeypatch):
     """Test main() counts correct number of studied cards."""
 
     fake_cards = [
