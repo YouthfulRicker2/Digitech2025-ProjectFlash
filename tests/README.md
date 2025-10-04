@@ -48,7 +48,7 @@ Tests can be simply run by installing and running `pytest` in Kādo program's ro
 
 iteration1 = Commit ID: [b19f1f1296ebb3e34016be64353b91a19a4026a2](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/b19f1f1296ebb3e34016be64353b91a19a4026a2)\
 iteration2 = Commit ID: [98c131eae39c3d1e32b5677422061607361fd6e7](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/98c131eae39c3d1e32b5677422061607361fd6e7)\
-iteration3 = current commit, link will be added on next commit
+iteration3 = [3630f9c40b8b4b470b15a0ece2e9d96e60739942](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/3630f9c40b8b4b470b15a0ece2e9d96e60739942)
 
 N/A indicates that the feature wasn't implemented or tested in that iteration.
 
@@ -58,6 +58,6 @@ iteration1 was not tested due to the tests not being fully developed at that sta
 |-------------------------------|-------------------------------|-------------|-------------|-------------|
 | Leitner System Timing Test | `test_ask_card_leitner_timing` | N/A | Yes | Yes |
 | Card Priority/Randomizer Test | `test_randomized_play_yields` | N/A | Yes | Yes |
-| Adding/Removing Card Test | `test_add_and_remove_card` | N/A | Yes | Yes|
+| Adding/Removing Card Test | `test_add_and_remove_card` | N/A | Yes | Yes |
 | Program Flow Test | `test_actions_main_runs` | N/A | Yes | Yes |
 | End Tally Test | `test_session_count` | N/A | N/A | Yes |
