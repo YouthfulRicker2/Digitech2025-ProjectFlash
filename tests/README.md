@@ -41,23 +41,42 @@ The primary testkit first imports the `main()` function, `cardParse` class, and 
     - ID: `test_session_count`
     - This test checks that `session_count` within main, correctly counts the session's card count. 
     - It confirms that the end value is 3 after simulating a user interaction. 
-
+- Empty CSV Test
+    - ID: `test_main_empty_csv`
+    - This test confirms that the program redirects when confronted with a selection of an empty csv.
+    - It makes sure that the program can add a card and detect when a csv is empty.
+- File Selection Test
+    - ID: `test_choose_existing_file`
+    - This test confirms that the file selection menu selects the correct file upon user input.
+    - It creates a false `cards` folder, with two files, selects the second file, then asserts that the file is correct after running the selection process.
+- New File Creation Test
+    - ID: `test_create_new_file`
+    - This test simulates the user creating a new file with the selection menu dialog.
+    - It very much just creates a file using the dialog.
+- File Empty Folder Test
+    - ID: `test_empty_folder `
+    - This test makes sure that when the folder is empty and the user doesn't enter a value for the new card deck, that the end result is the creation of `new_cards.csv`.
 
 ## Testing
-Tests can be simply run by installing and running `pytest` in Kādo program's root folder.\
+Tests can be simply run by installing and running `pytest -v` in Kādo program's root folder.\
 
 iteration1 = Commit ID: [b19f1f1296ebb3e34016be64353b91a19a4026a2](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/b19f1f1296ebb3e34016be64353b91a19a4026a2)\
 iteration2 = Commit ID: [98c131eae39c3d1e32b5677422061607361fd6e7](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/98c131eae39c3d1e32b5677422061607361fd6e7)\
-iteration3 = [3630f9c40b8b4b470b15a0ece2e9d96e60739942](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/3630f9c40b8b4b470b15a0ece2e9d96e60739942)
+iteration3 = Commit ID: [3630f9c40b8b4b470b15a0ece2e9d96e60739942](https://github.com/YouthfulRicker2/Digitech2025-ProjectFlash/commit/3630f9c40b8b4b470b15a0ece2e9d96e60739942)\
+iteration4 = Commit ID: LATEST
 
 N/A indicates that the feature wasn't implemented or tested in that iteration.
 
 iteration1 was not tested due to the tests not being fully developed at that stage. They were developed alongside and completed slightly after iteration2.
 
-| Test Friendly Name | Test ID | iteration1 | iteration2 | iteration3 |
-|-------------------------------|-------------------------------|-------------|-------------|-------------|
-| Leitner System Timing Test | `test_ask_card_leitner_timing` | N/A | Yes | Yes |
-| Card Priority/Randomizer Test | `test_randomized_play_yields` | N/A | Yes | Yes |
-| Adding/Removing Card Test | `test_add_and_remove_card` | N/A | Yes | Yes |
-| Program Flow Test | `test_actions_main_runs` | N/A | Yes | Yes |
-| End Tally Test | `test_session_count` | N/A | N/A | Yes |
+| Test Friendly Name | Test ID | iteration1 | iteration2 | iteration3 | iteration4 |
+|-------------------------------|-------------------------------|-------------|-------------|-------------|-------------|
+| Leitner System Timing Test | `test_ask_card_leitner_timing` | N/A | Yes | Yes | Yes |
+| Card Priority/Randomizer Test | `test_randomized_play_yields` | N/A | Yes | Yes | Yes |
+| Adding/Removing Card Test | `test_add_and_remove_card` | N/A | Yes | Yes | Yes |
+| Program Flow Test | `test_actions_main_runs` | N/A | Yes | Yes | Yes |
+| End Tally Test | `test_session_count` | N/A | N/A | Yes | Yes |
+| Empty CSV Test | `test_main_empty_csv` | N/A | N/A | N/A | Yes |
+| File Selection Test | `test_choose_existing_file` | N/A | N/A | N/A | Yes |
+| New File Creation Test | `test_create_new_file` | N/A | N/A | N/A | Yes |
+| File Empty Folder Test | `test_empty_folder` | N/A | N/A | N/A | Yes |

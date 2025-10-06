@@ -22,7 +22,7 @@ class cardParse:
     def save_cards(filename, cards):
         """Place new values back into csv"""
         with open(filename, "w", newline='', encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=["Question", "Answer", "LeitnerBox"], quoting=csv.QUOTE_ALL)
+            writer = csv.DictWriter(f, fieldnames=["Question", "Answer", "LeitnerBox"], )
             writer.writeheader()
             writer.writerows(cards)
     

@@ -1,7 +1,7 @@
 import sys, os
 import pytest # type: ignore
 sys.path.append(os.path.dirname(os.path.dirname(__file__))) 
-from actions import studyTime
+from actions import studyTime, cardParse
 
 class dummyInput:
     """Simulate user input"""
@@ -68,25 +68,93 @@ def test_randomized_play_yields(monkeypatch):
     # Ensure all cards were yielded
     assert set(seen_questions) == {"Q1","Q2","Q3","Q4"}
 
-def test_session_count(monkeypatch):
-    """Test main() counts correct number of studied cards."""
 
+def test_main_empty_csv(monkeypatch):
+    """Test main() behavior when CSV has 0 cards"""
+    monkeypatch.setattr(cardParse, "choose_file", lambda: "dummy.csv")
+    monkeypatch.setattr(cardParse, "load_cards", lambda filename: [])
+    monkeypatch.setattr("builtins.input", dummyInput([
+        "y",
+        "Question1",
+        "Answer1",
+        "y"
+    ]))
+    added = {}
+    # dummy add_card function to record call
+    def dummy_add_card(q, a, f):
+        added["q"] = q
+        added["a"] = a
+        added["f"] = f
+
+    from data import fileManagement
+    monkeypatch.setattr(fileManagement, "add_card", dummy_add_card)
+
+    from actions import main
+    cards, count = main()
+    assert count == 0
+    assert added["q"] == "Question1"
+    assert added["a"] == "Answer1"
+    assert added["f"] == "dummy.csv"
+
+def test_session_count(monkeypatch):
+    """Test main() counts correct number of studied cards"""
     fake_cards = [
         {"Question": "Q1", "Answer": "A1", "LeitnerBox": "1"},
         {"Question": "Q2", "Answer": "A2", "LeitnerBox": "1"},
         {"Question": "Q3", "Answer": "A3", "LeitnerBox": "1"},
     ]
 
-    monkeypatch.setattr("actions.cardParse.load_cards", lambda filename: fake_cards)
-    monkeypatch.setattr("actions.cardParse.save_cards", lambda a, b: None)
-    monkeypatch.setattr("actions.studyTime.ask_card", lambda card: None)
-
-    inputs = dummyInput(["y", "y", "n"])
-    monkeypatch.setattr("builtins.input", inputs)
+    monkeypatch.setattr(cardParse, "choose_file", lambda: "dummy.csv")
+    monkeypatch.setattr(cardParse, "load_cards", lambda filename: fake_cards)
+    monkeypatch.setattr(cardParse, "save_cards", lambda a, b: None)
+    monkeypatch.setattr(studyTime, "ask_card", lambda card: None)
+    monkeypatch.setattr("builtins.input", dummyInput(["y", "y", "n"]))
 
     from actions import main
     result, card_count = main()
     assert result is fake_cards
-    assert card_count is 3
+    assert card_count == 3
 
 
+def test_choose_existing_file(monkeypatch, tmp_path):
+    """User selects an existing CSV from the folder"""
+    folder = tmp_path / "cards"
+    folder.mkdir()
+    file1 = folder / "set1.csv"
+    file1.write_text("Question,Answer,LeitnerBox\n")
+    file2 = folder / "set2.csv"
+    file2.write_text("Question,Answer,LeitnerBox\n")
+
+    monkeypatch.setattr("builtins.input", dummyInput(["2"]))  # choose second file
+    monkeypatch.setattr("os.path.exists", lambda path: True)
+    monkeypatch.setattr("os.listdir", lambda path: ["set1.csv", "set2.csv"])
+    monkeypatch.setattr("os.makedirs", lambda path: None)
+
+    chosen = cardParse.choose_file()
+    assert chosen.endswith("set2.csv")
+
+def test_create_new_file(monkeypatch, tmp_path):
+    """User chooses to create a new CSV"""
+    folder = tmp_path / "cards"
+    folder.mkdir()
+    
+    monkeypatch.setattr("builtins.input", dummyInput(["1", "1"]))  # new file
+    monkeypatch.setattr("os.path.exists", lambda path: True)
+    monkeypatch.setattr("os.listdir", lambda path: [])  # no files
+    monkeypatch.setattr("os.makedirs", lambda path: None)
+
+    chosen = cardParse.choose_file()
+    assert chosen.endswith("1.csv")
+
+def test_empty_folder(monkeypatch, tmp_path):
+    """No CSVs exist, user enters empty name -> defaults to 'new_cards.csv'"""
+    folder = tmp_path / "cards"
+    folder.mkdir()
+    
+    monkeypatch.setattr("builtins.input", dummyInput([""]))  # press enter for default
+    monkeypatch.setattr("os.path.exists", lambda path: True)
+    monkeypatch.setattr("os.listdir", lambda path: [])
+    monkeypatch.setattr("os.makedirs", lambda path: None)
+
+    chosen = cardParse.choose_file()
+    assert chosen.endswith("new_cards.csv")
